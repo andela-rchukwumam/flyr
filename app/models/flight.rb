@@ -6,13 +6,14 @@ class Flight < ActiveRecord::Base
   has_many :passenger_bookings, through: :bookings
   has_many :passengers, through: :bookings
 
+  
+    def self.search(from, to, date)
+      where(departure_airport_id: from, destination_airport_id: to, date: Flight.format_date(date))
+    end
 
-  def self.search(from, to, date)
-    where(departure_airport_id: from, destination_airport_id: to, date: Flight.format_date(date))
-  end
-
-  def self.format_date(date)
-    date = date.to_date
-    date.beginning_of_day..date.end_of_day
-  end
+    def self.format_date(date)
+      date = date.to_date
+      date.beginning_of_day..date.end_of_day
+    end
+ 
 end
