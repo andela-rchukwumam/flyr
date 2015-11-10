@@ -1,6 +1,6 @@
 class Passenger < ActiveRecord::Base
   	has_many :bookings,
-  	has_many :flights, through: :bookings
+  	# has_many :flights, through: :bookings
 
  	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   	validates :name, presence: true
