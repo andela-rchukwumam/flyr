@@ -11,40 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103114700) do
+ActiveRecord::Schema.define(version: 20151105223211) do
 
   create_table "airports", force: :cascade do |t|
-    t.string   "code"
+    t.string   "name"
     t.string   "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "bookings", force: :cascade do |t|
+    t.integer  "user_id"
     t.integer  "flight_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "flights", force: :cascade do |t|
-    t.datetime "date"
-    t.integer  "departure_airport_id"
-    t.integer  "destionation_airport_id"
-    t.float    "price"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  create_table "passenger_bookings", force: :cascade do |t|
-    t.integer  "passenger_id"
+    t.integer  "dept_id"
+    t.integer  "arr_id"
+    t.date     "flight_date"
+    t.string   "price"
     t.integer  "booking_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.time     "flight_time"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "passengers", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
+    t.integer  "booking_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,7 +52,6 @@ ActiveRecord::Schema.define(version: 20151103114700) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "remember_digest"
   end
 
 end

@@ -10,14 +10,12 @@ Passenger.delete_all
 Booking.delete_all
 
 Airport.delete_all   
-lax = Airport.create(code: "LAX", city: "Los Angeles")
-sfo = Airport.create(code: "SFO", city: "San Francisco")
-iad = Airport.create(code: "IAD", city: "Washington D.C.")
-jfk = Airport.create(code: "NYC", city: "New York City")
+lag = Airport.create(city: "LAG", name: "Muritala Mohammed Airport Lagos")
+abj = Airport.create(city: "ABJ", name: "Nnamdi Azikiwe Airport Abuja")
+phc = Airport.create(city: "PHC", name: "Port Harcourt International Airport")
+kad = Airport.create(city: "KAD", name: "Kaduna International Airport")
+enu= Airport.create(city: "ENU", name: "Enugu International Airport")
 
-duration = { "LAX_SFO" => 1.hour, "LAX_IAD" => 5.hours, "LAX_NYC" => 6.hours, "SFO_LAX" => 1.hour, "IAD_LAX" => 5.hours, "NYC_LAX" => 6.hours,
-             "SFO_IAD" => 9.hours, "SFO_NYC" => 8.hours, "IAD_SFO" => 9.hours, "NYC_SFO" => 8.hours, 
-             "IAD_NYC" => 1.hour, "NYC_IAD" => 1.hour }
 
 Flight.delete_all
 
@@ -25,14 +23,13 @@ Flight.delete_all
 Airport.all.each do |airport1|
   Airport.all.each do |airport2|
     unless airport1 == airport2
-      dur = duration["#{airport1.code}_#{airport2.code}"]
-      Flight.create(from_airport_id: airport1.id, to_airport_id: airport2.id, date: Time.now, duration: dur)
-      Flight.create(from_airport_id: airport1.id, to_airport_id: airport2.id, date: 3.hours.from_now, duration: dur)
-      Flight.create(from_airport_id: airport1.id, to_airport_id: airport2.id, date: 6.hours.from_now, duration: dur)
-      Flight.create(from_airport_id: airport1.id, to_airport_id: airport2.id, date: 1.day.from_now, duration: dur)
-      Flight.create(from_airport_id: airport1.id, to_airport_id: airport2.id, date: (1.day + 6.hours).from_now, duration: dur)
-      Flight.create(from_airport_id: airport1.id, to_airport_id: airport2.id, date: 2.days.from_now, duration: dur)
-      Flight.create(from_airport_id: airport1.id, to_airport_id: airport2.id, date: (2.days + 3.hours).from_now, duration: dur)
+      Flight.create(dept_id: airport1.id, arr_id: airport2.id, flight_date: Time.now, price: $3000)
+      Flight.create(dept_id: airport1.id, arr_id: airport2.id, flight_date: 3.hours.from_now, price: $3000)
+      Flight.create(dept_id: airport1.id, arr_id: airport2.id, flight_date: 6.hours.from_now, price: $3000)
+      Flight.create(dept_id: airport1.id, arr_id: airport2.id, flight_date: 1.day.from_now, price: $3000)
+      Flight.create(dept_id: airport1.id, arr_id: airport2.id, flight_date: (1.day + 6.hours).from_now, price: $3000)
+      Flight.create(dept_id: airport1.id, arr_id: airport2.id, flight_date: 2.days.from_now, price: $3000)
+      Flight.create(dept_id: airport1.id, arr_id: airport2.id, flight_date: (2.days + 3.hours).from_now, price: $3000)
     end
   end
 end
