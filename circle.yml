@@ -1,0 +1,12 @@
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: ruth-flyapp
+machine:
+  ruby:
+    version: 2.1.7
+# database:
+#   override:
+#     - mv config/database.ci.yml config/database.yml
+#     - bundle exec rake db:create db:migrate db:seed permissions:permissions --trace

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+ruby  '2.1.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use SCSS for stylesheets
@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -50,5 +50,10 @@ group :production do
   gem 'rails_12factor'
 end
 
+group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'guard-rspec'
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
