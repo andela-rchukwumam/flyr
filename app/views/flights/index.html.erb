@@ -9,8 +9,9 @@
       <br><br>
     </div>
  </div>
+ <%require "pry"; binding.pry%>
 	<% if !@flights.nil? %>
-		<%= render 'search_results' %>
+		<%= render 'flights/search_results' %>
 	 <% end %>
 <div class="wrapper">
 	<div class="container">
