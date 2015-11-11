@@ -1,8 +1,8 @@
-deployment:
-  staging:
-    branch: master
-    heroku:
-      appname: ruth-flyapp
+# deployment:
+#   staging:
+#     branch: master
+#     heroku:
+#       appname: ruth-flyapp
 machine:
   ruby:
     version: 2.1.7
