@@ -10,11 +10,11 @@ Passenger.delete_all
 Booking.delete_all
 
 Airport.delete_all   
-lag = Airport.create(city: "LAG", name: "Muritala Mohammed Airport Lagos")
-abj = Airport.create(city: "ABJ", name: "Nnamdi Azikiwe Airport Abuja")
+lag = Airport.create(city: "LAGOS", name: "Muritala Mohammed Airport Lagos")
+abj = Airport.create(city: "ABUJA", name: "Nnamdi Azikiwe Airport Abuja")
 phc = Airport.create(city: "PHC", name: "Port Harcourt International Airport")
-kad = Airport.create(city: "KAD", name: "Kaduna International Airport")
-enu= Airport.create(city: "ENU", name: "Enugu International Airport")
+kad = Airport.create(city: "KADUNA", name: "Kaduna International Airport")
+enu= Airport.create(city: "ENUGU", name: "Enugu International Airport")
 
 
 Flight.delete_all

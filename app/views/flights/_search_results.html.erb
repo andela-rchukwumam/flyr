@@ -3,13 +3,13 @@
   <table>
   <thead>
     <tr>
-      <th width = "50">Select</th>
-      <th width ="110">Flight #</th>
-      <th width ="150">Date</th>
-      <th width ="150">Departs</th>
-      <th width ="110">From</th>
-      <th width ="110">To</th>
-      <th width ="110">Duration</th>
+      <th>Select</th>
+      <th>Flight #</th>
+      <th>Date</th>
+      <th>Departs</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Time</th>
     </tr>
   </thead>
 
@@ -20,9 +20,9 @@
           <td><%= flight.id %></td>
           <td><%= flight.flight_date.strftime("%B %d, %Y")  %></td>
           <td><%= flight.flight_date.strftime('%I:%M:%S %p') %></td>
-          <td><%= flight.from_airport.code %></td>
-          <td><%= flight.to_airport.code %></td>
-          <td><%= distance_of_time_in_words(flight.duration) %></td>
+          <td><%= flight.dept_id.name %></td>
+          <td><%= flight.arr_id.name %></td>
+          <td><%= flight.flight_time %></td>
         </tr>      
       </tbody>
     <% end %>

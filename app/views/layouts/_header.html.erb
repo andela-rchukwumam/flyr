@@ -9,7 +9,7 @@
           <!-- <li><a href="collapsible.html">JavaScript</a></li> -->
         <% else %>
           <ul id='dropdown1' class='dropdown-content'>
-            <li><a href="#!">Profile</a></li>
+            <li><a href="/bookings">Profile</a></li>
             <li><%= link_to "Sign Out", logout_path%></li>
           </ul>
           <li class='dropdown-button' href='#' data-activates='dropdown1'> Welcome, <%= current_user.name%> </li>
