@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'flights' => 'flights#index'
   get 'bookings' => 'bookings#new'
   get 'new_bookings' => 'bookings#create'
+  get 'show_bookings' => 'bookings#show'
   get    'about'   => 'flights#about'
   get    'contact' => 'flights#contact'
   get    'signup'  => 'users#new'

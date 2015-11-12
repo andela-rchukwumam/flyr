@@ -4,14 +4,16 @@ class BookingsController < ApplicationController
 	end
 
 	def create
+		@booking = Booking.new(booking_params)
 	end
 
 	def show
+		@booking = Booking.find(params[:id])
 	end
 
 	  private
 
-	 def whitelist_params
+	 def booking_params
 	    	params.require(:booking).permit(:flight_id, :departure, :arrival, :departure_date, :passengers, 
 	    										passengers_attributes: [:name, :email])
   	end
