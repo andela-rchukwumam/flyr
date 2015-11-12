@@ -11,6 +11,7 @@
       <th>From</th>
       <th>To</th>
       <th>Time</th>
+      <th>No of Passengers</th>
     </tr>
   </thead>
 
@@ -23,10 +24,12 @@
           <td><%= flight.departure.name %></td>
           <td><%= flight.arrival.name %></td>
           <td><%= flight.flight_time %></td>
+          <td><%= params[:passengers]%></td>
         </tr>      
       </tbody>
     <% end %>
     </table>
+    
     <%= submit_tag "Book Flight", :name => nil, class: "btn-large blue"%>
   </div>
 <% end %>
