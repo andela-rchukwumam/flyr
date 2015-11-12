@@ -8,25 +8,19 @@ class FlightsController < ApplicationController
 	    session['dates'] = @dates
 	    @passengers = [1, 2, 3, 4]
 	    session['passengers'] = @passengers
+
 	end
 
 	def search
-			  
 	      @from = params[:from].to_i
 	      @to = params[:to].to_i
 	      @date = Date.parse (params[:date])
 	      @passengers_select = params[:passengers]
 	      @flights = Flight.where(arr_id: @to, dept_id: @from, departure_date: @date)
+	      # require "pry"; binding.pry
 		     respond_to do |format|
 	          format.html { render :index}
 	          format.js {}
 		    end
 	end
-
-
-	private
-    	def search_params
-      	params.require(:flight).permit(:origin, :destination, :departure_date, :no_of_passenegers, 
-      		:flight_attributes[:origin_id, :destination_id, :departure_date, :no_of_passenegers])
-    	end
 end

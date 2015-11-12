@@ -1,4 +1,4 @@
-<%= form_tag '', method: 'get' do %>
+<%= form_tag '/bookings', method: 'get' do %>
   <div class="row">
   <table>
   <thead>
@@ -27,8 +27,11 @@
       </tbody>
     <% end %>
     </table>
-    <%= submit_tag "Select Flight", :name => nil, class: "button" %>
+    <%= submit_tag "Select Flight", :name => nil, class: "btn-large blue" %>
     <%= hidden_field_tag :passengers, params[:passengers] %>
-
+    <%= hidden_field_tag :from, params[:from] %>
+    <%= hidden_field_tag :to, params[:departure] %>
+    <%= hidden_field_tag :date, params[:arrival] %>
+    <%= hidden_field_tag :id, params[:flight_id] %>
   </div>
 <% end %>
