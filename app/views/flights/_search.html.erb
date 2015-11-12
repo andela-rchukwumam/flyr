@@ -1,21 +1,21 @@
-<%= form_tag flights_path, method: 'get' do %>
+<%= form_tag flights_search_path, method: 'get' do %>
 
 <div class="row">
   <%= hidden_field_tag :search %>
   <div class="input-field col s3">
-    <%= select_tag :from, options_for_select(@airports),  prompt: "From" %>
+    <%= select_tag :from, options_for_select(session['airports']),  prompt: "From" %>
   </div>
 
   <div class="input-field col s3">
-    <%= select_tag :to, options_for_select(@airports), prompt: "To" %>
+    <%= select_tag :to, options_for_select(session['airports']), prompt: "To" %>
   </div>
 
   <div class="input-field col s3">
-      <%= select_tag :date, options_for_select(@dates), prompt: "Date" %>
+      <%= select_tag :date, options_for_select(session['dates']), prompt: "Date" %>
   </div>
 
   <div class="input-field col s3">
-    <%= select_tag :passengers, options_for_select(@passengers), prompt: "passengers" %>
+    <%= select_tag :passengers, options_for_select(session['passengers']), prompt: "passengers" %>
   </div>
    
   <div class="row center">
