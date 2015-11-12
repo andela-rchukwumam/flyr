@@ -1,7 +1,7 @@
 <% provide(:title, 'Booking') %>
-<h1>Flight Booking Information</h1>
+<h3>Flight Booking Information</h3>
 <table>
-  <% form_tag booking_path, method: 'get'  do%>
+  <% form_tag bookings_path, method: 'get'  do%>
    <div class="data-field">
      <%= hidden_field_tag :booking %>
         <tr>
