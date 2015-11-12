@@ -1,35 +1,32 @@
 class FlightsController < ApplicationController
 	def index
+		p "hello"
 	    @flight = Flight.new
-
-	    @airports = Airport.all.map { |airport| [airport.city, airport.name] }
-	    @dates = Flight.order("flight_date asc").all.map { |flight| [flight.flight_date.strftime("%d/%m/%Y")] }.uniq
+	    @airports = Airport.all.map { |airport| [airport.city, airport.id] }
+	    session['airports'] = @airports
+	    @dates = Flight.order("departure_date asc").all.map { |flight| [flight.departure_date.strftime("%d/%m/%Y")] }.uniq
+	    session['dates'] = @dates
 	    @passengers = [1, 2, 3, 4]
-
-
-	    if !params[:flight].nil?
-	      @from = params[:flight][:dept_id]
-	      @to = params[:flight][:arr_id]
-	      @date = params[:flight][:flight_date]
-	      @passengers_select = params[:flight][:passengers]
-	      @flights = Flight.search(@from, @to, @date)
-
-	      respond_to do |format|
-	        format.html
-	        format.js
-	      end
-	    end
+	    session['passengers'] = @passengers
 	end
 
-	def about
-		
+	def search
+			  
+	      @from = params[:from].to_i
+	      @to = params[:to].to_i
+	      @date = Date.parse (params[:date])
+	      @passengers_select = params[:passengers]
+	      @flights = Flight.where(arr_id: @to, dept_id: @from, departure_date: @date)
+		     respond_to do |format|
+	          format.html { render :index}
+	          format.js {}
+		    end
 	end
 
-	def contact
-		
-	end
 
-	def terms
-		
-	end
+	private
+    	def search_params
+      	params.require(:flight).permit(:origin, :destination, :departure_date, :no_of_passenegers, 
+      		:flight_attributes[:origin_id, :destination_id, :departure_date, :no_of_passenegers])
+    	end
 end

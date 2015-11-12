@@ -5,12 +5,12 @@
       <div class="row center">
         <h5 class="header col s12 light">Find your destination in one Search & Book the best deal</h5>
       </div>
-        <%= render 'search' %>
+        <%= render 'search' %>   
       <br><br>
     </div>
  </div>
 	<% if !@flights.nil? %>
-		<%= render 'flights/search_results' %>
+		<%= render partial: 'flights/search_results' %>
 	 <% end %>
 <div class="wrapper">
 	<div class="container">
