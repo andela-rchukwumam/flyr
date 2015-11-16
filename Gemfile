@@ -31,6 +31,7 @@ gem 'faker'
 
 gem "pry"
 gem "pry-nav"
+gem "cocoon"
 # Use Unicorn as the app server
 # gem 'unicorn'
 

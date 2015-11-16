@@ -7,4 +7,7 @@ class Flight < ActiveRecord::Base
 
      validates :departure, presence: true
      validates :arrival, presence: true
+
+     accepts_nested_attributes_for :passengers
+     accepts_nested_attributes_for :bookings
 end

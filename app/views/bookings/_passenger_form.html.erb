@@ -1,0 +1,7 @@
+          <div class="col s6 toggle-passengers">
+          <h3> Passenger Details</h3>
+                <%= render 'passenger_fields' %>
+                <div class='links'>
+                  <%= link_to_add_association 'Add Passenger', f, :passengers, :class => "btn-large blue" %>
+                </div>
+          </div>

@@ -1,8 +1,9 @@
 class BookingsController < ApplicationController
 	before_action :set_booking, only: [:show, :edit, :update, :destroy]
 	def new
-		@flights = Flight.where(id:params[:flight_id])
+		@flights = Flight.where(id: params[:flight_id])
 		@booking = Booking.new(set_booking_params)
+		# @booking.user = current_user if current_user
 	end
 
 	def create
@@ -20,8 +21,9 @@ class BookingsController < ApplicationController
 	end
 
 	def show
-		@booking = Booking.where(flight_id: params[:flight_id])
-		@flights = Flight.where(booking_id:params[:id])
+		binding.pry
+		@booking = Booking.find(params[:id])
+		@passenger = Passenger.where(booking_id: @booking.id)
 	end
 
 	def update
@@ -49,11 +51,11 @@ class BookingsController < ApplicationController
     	end
 
 	def booking_params
-	    	params.permit(:flight_id, :user_id,
-	    										passengers_attributes: [:name, :email])
+	    	params.require(:booking).permit(:flight_id, :user_id,
+	    					passengers_attributes: [:name, :email])
   	end
 
   	def set_booking_params
-  		params.permit(:flight_id)
+  		params.permit(:flight_id, :user_id)
 	end
 end

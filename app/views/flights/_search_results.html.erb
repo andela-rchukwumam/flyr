@@ -17,7 +17,7 @@
     <% @flights.each do |flight| %>
       <tbody>
         <tr>
-          <td><%= radio_button_tag :flight_id, flight.id, class: "ruth-radio"  %></td>
+          <td><%= radio_button_tag :flight_id, flight.id, class: "ruth-radio", params[:flight_id] %></td>
           <td><%= flight.id %></td>
           <td><%= flight.departure_date.strftime("%B %d, %Y")  %></td>
           <td><%= flight.arrival_date.strftime("%B %d, %Y") %></td>
@@ -29,11 +29,9 @@
       </tbody>
     <% end %>
     </table>
-    <%= submit_tag "Select Flight", :name => nil, class: "btn-large blue" %>
     <%= hidden_field_tag :passengers, params[:passengers] %>
-    <%= hidden_field_tag :from, params[:from] %>
-    <%= hidden_field_tag :to, params[:departure] %>
-    <%= hidden_field_tag :date, params[:arrival] %>
-    <%= hidden_field_tag :id, params[:flight_id] %>
+    <%= hidden_field_tag :flight_id, params[:flight_id] %>
+    <%= hidden_field_tag :user_id, value: current_user.id, params[:user_id] %>
+    <%= submit_tag "Select Flight", :name => nil, class: "btn-large blue" %>
   </div>
 <% end %>

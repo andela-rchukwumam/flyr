@@ -1,45 +1,59 @@
 <% provide(:title, 'Booking') %>
-  <%= form_tag '/new_bookings', method: 'get' do %>
     <div class="container">
-      <h3>Flight Details</h3>
-        <table class="striped">
-          <% @flights.each do |flight| %>
-            <tr>
-              <th>Flight No</th>
-              <td><%= flight.id %></td>
-            </tr>
-            <tr>
-              <th>Departure Date</th>
-              <td><%= flight.departure_date.strftime("%B %d, %Y")  %></td>
-            </tr>
-            <tr>
-            <th>Arrival Date</th>
-              <td><%= flight.arrival_date.strftime("%B %d, %Y") %></td>
-            </tr>
-            <tr>
-              <th>From</th>
-              <td><%= flight.departure.name %></td>
-            </tr>
-            <tr>
-              <th>To</th>
-              <td><%= flight.arrival.name %></td>
-            </tr>
-            <tr>
-              <th>Time</th>
-              <td><%= flight.flight_time %></td>
-            </tr>
-            <tr>
-              <th>No of Passengers</th>
-              <td><%= params[:passengers]%></td>
-            </tr>
-            <tr>
-              <th>Price</th>
-              <td>$<%= flight.price %> / passenger </td>
-            </tr>      
-            </tbody>
-          <% end %>
-        </table>
-        <%= hidden_field_tag :flight_id, params[:flight_id] %>
-        <%= submit_tag "Book Flight", :name => nil, class: "btn-large blue"%>
+        <div class="row">
+          <div class="col s6">
+              <h3>Flight Details</h3>
+                <table class="striped">
+                  <% @flights.each do |flight| %>
+                    <tr>
+                      <th>Flight No</th>
+                      <td><%= flight.id %></td>
+                    </tr>
+                    <tr>
+                      <th>Departure Date</th>
+                      <td><%= flight.departure_date.strftime("%B %d, %Y")  %></td>
+                    </tr>
+                    <tr>
+                    <th>Arrival Date</th>
+                      <td><%= flight.arrival_date.strftime("%B %d, %Y") %></td>
+                    </tr>
+                    <tr>
+                      <th>From</th>
+                      <td><%= flight.departure.name %></td>
+                    </tr>
+                    <tr>
+                      <th>To</th>
+                      <td><%= flight.arrival.name %></td>
+                    </tr>
+                    <tr>
+                      <th>Time</th>
+                      <td><%= flight.flight_time %></td>
+                    </tr>
+                    <tr>
+                      <th>No of Passengers</th>
+                      <td><%= params[:passengers]%></td>
+                    </tr>
+                    <tr>
+                      <th>Price</th>
+                      <td>$<%= flight.price %> / passenger </td>
+                    </tr>      
+                    </tbody>
+                  <% end %>
+                </table>
+                <%= hidden_field_tag :flight_id, params[:flight_id] %>
+          </div>
+          <div class="col s6 toggle-passengers">
+          <h3> Passenger Details</h3>
+                <%= form_for @booking do |f| %>
+                 <%= f.hidden_field(:flight_id) %>
+                  <%= f.hidden_field :user_id, value: current_user.id %>
+                      <%= f.fields_for :passengers do |passenger| %>
+                          <%= render 'passenger_fields', :f => passenger %>
+                       <% end %>
+                        <div class='links'>
+                          <%= link_to_add_association 'Add Passenger', f, :passengers, :class => "btn-large blue" %>
+                        </div>
+                      <%= f.submit "Book Flight", :name => nil, class: "btn-large blue book-flight"%>
+                <% end %>
+          </div>
     </div>
-  <% end %>
