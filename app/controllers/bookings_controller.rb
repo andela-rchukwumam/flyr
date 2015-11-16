@@ -20,7 +20,8 @@ class BookingsController < ApplicationController
 	end
 
 	def show
-		@booking = Booking.find(params[:id])
+		@booking = Booking.where(flight_id: params[:flight_id])
+		@flights = Flight.where(booking_id:params[:id])
 	end
 
 	def update
