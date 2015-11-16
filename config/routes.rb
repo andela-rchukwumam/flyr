@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get 'logout'  => 'sessions#destroy'
   get 'search' => 'flights#search', as: "flights_search"
   resources :users
+  resources :bookings
 end

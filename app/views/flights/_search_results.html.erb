@@ -10,6 +10,7 @@
       <th>From</th>
       <th>To</th>
       <th>Time</th>
+      <th>Price</th>
     </tr>
   </thead>
 
@@ -23,6 +24,7 @@
           <td><%= flight.departure.name %></td>
           <td><%= flight.arrival.name %></td>
           <td><%= flight.flight_time %></td>
+          <td>$<%= flight.price %></td>
         </tr>      
       </tbody>
     <% end %>

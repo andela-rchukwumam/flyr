@@ -4,4 +4,7 @@ class Flight < ActiveRecord::Base
 
   	has_many :bookings, class_name: Booking, foreign_key: :booking_id
   	has_many :passengers, through: :bookings
+
+     validates :departure, presence: true
+     validates :arrival, presence: true
 end

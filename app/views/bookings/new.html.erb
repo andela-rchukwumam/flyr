@@ -2,7 +2,7 @@
   <%= form_tag '/new_bookings', method: 'get' do %>
     <div class="container">
       <h3>Flight Details</h3>
-        <table>
+        <table class="striped">
           <% @flights.each do |flight| %>
             <tr>
               <th>Flight No</th>
@@ -31,10 +31,15 @@
             <tr>
               <th>No of Passengers</th>
               <td><%= params[:passengers]%></td>
+            </tr>
+            <tr>
+              <th>Price</th>
+              <td>$<%= flight.price %> / passenger </td>
             </tr>      
             </tbody>
           <% end %>
         </table>
+        <%= hidden_field_tag :flight_id, params[:flight_id] %>
         <%= submit_tag "Book Flight", :name => nil, class: "btn-large blue"%>
     </div>
   <% end %>

@@ -1,0 +1,35 @@
+<% provide(:title, 'Booking Confirmation') %>
+<h3>Booking Confirmation</h3>
+<%= form_tag '/show_bookings', method: 'get' do %>
+  <div class="row">
+  <table>
+  <thead>
+    <tr>
+      <th>Flight #</th>
+      <th>Departure Date</th>
+      <th>Arrival Date</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Time</th>
+      <th>No of Passengers</th>
+    </tr>
+  </thead>
+
+    <% @booking.each do |flight| %>
+      <tbody>
+        <tr>
+          <td><%= flight.id %></td>
+          <td><%= flight.departure_date.strftime("%B %d, %Y")  %></td>
+          <td><%= flight.arrival_date.strftime("%B %d, %Y") %></td>
+          <td><%= flight.departure.name %></td>
+          <td><%= flight.arrival.name %></td>
+          <td><%= flight.flight_time %></td>
+          <td><%= params[:passengers]%></td>
+        </tr>      
+      </tbody>
+    <% end %>
+    </table>
+    
+    <%= submit_tag "Show Details", :name => nil, class: "btn-large blue"%>
+  </div>
+<% end %>
