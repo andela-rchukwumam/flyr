@@ -1,10 +1,10 @@
 <% provide(:title, 'Booking') %>
+<% flight = @flight %>
     <div class="container">
         <div class="row">
           <div class="col s6">
               <h3>Flight Details</h3>
                 <table class="striped">
-                  <% @flights.each do |flight| %>
                     <tr>
                       <th>Flight No</th>
                       <td><%= flight.id %></td>
@@ -38,15 +38,15 @@
                       <td>$<%= flight.price %> / passenger </td>
                     </tr>      
                     </tbody>
-                  <% end %>
                 </table>
-                <%= hidden_field_tag :flight_id, params[:flight_id] %>
           </div>
           <div class="col s6 toggle-passengers">
           <h3> Passenger Details</h3>
                 <%= form_for @booking do |f| %>
-                 <%= f.hidden_field(:flight_id) %>
+                <%if current_user%>
                   <%= f.hidden_field :user_id, value: current_user.id %>
+                  <%end%>
+                  <%= f.hidden_field :flight_id, value: flight.id %>
                       <%= f.fields_for :passengers do |passenger| %>
                           <%= render 'passenger_fields', :f => passenger %>
                        <% end %>

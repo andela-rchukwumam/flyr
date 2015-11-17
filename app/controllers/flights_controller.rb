@@ -17,7 +17,6 @@ class FlightsController < ApplicationController
 	      @date = Date.parse (params[:date])
 	      @passengers_select = params[:passengers]
 	      @flights = Flight.where(arr_id: @to, dept_id: @from, departure_date: @date)
-	      # require "pry"; binding.pry
 		     respond_to do |format|
 	          format.html { render :index}
 	          format.js {}

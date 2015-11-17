@@ -1,6 +1,5 @@
 <% provide(:title, 'Booking Confirmation') %>
   <%= form_tag '/show_bookings', method: 'get' do %>
-    <%= hidden_field_tag :flight_id, params[:flight_id] %>
   <h4 align= "center"  class="blue-text text-darken-2" >Your Booking For Flight "<%= @booking.flight.airline %> #000<%= @booking.id %>" from <%= @booking.flight.departure.city %> to <%= @booking.flight.arrival.city %> was successful.</h4>
     <div class="container">
         <div class="row">
@@ -43,7 +42,8 @@
             </table>
             <%= submit_tag "Pay for Booking", :name => nil, class: "btn-large blue"%>
           </div>
-          <div class="col s6">
+          <div class="col s6"><div class="col s6 toggle-passengers">
+          <h3> Passenger Details</h3>
               <%@passenger.each do |passenger|%>
                   <table class="striped">
                     <tr>

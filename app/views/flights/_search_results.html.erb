@@ -1,4 +1,4 @@
-<%= form_tag '/bookings', method: 'get' do %>
+<%= form_tag new_booking_path, method: 'get' do %>
   <div class="row">
   <table>
   <thead>
@@ -17,7 +17,7 @@
     <% @flights.each do |flight| %>
       <tbody>
         <tr>
-          <td><%= radio_button_tag :flight_id, flight.id, class: "ruth-radio", params[:flight_id] %></td>
+          <td><%= radio_button_tag :flight_id, flight.id, class: "ruth-radio"%></td>
           <td><%= flight.id %></td>
           <td><%= flight.departure_date.strftime("%B %d, %Y")  %></td>
           <td><%= flight.arrival_date.strftime("%B %d, %Y") %></td>
@@ -29,9 +29,7 @@
       </tbody>
     <% end %>
     </table>
+    </div>
     <%= hidden_field_tag :passengers, params[:passengers] %>
-    <%= hidden_field_tag :flight_id, params[:flight_id] %>
-    <%= hidden_field_tag :user_id, value: current_user.id, params[:user_id] %>
     <%= submit_tag "Select Flight", :name => nil, class: "btn-large blue" %>
-  </div>
 <% end %>

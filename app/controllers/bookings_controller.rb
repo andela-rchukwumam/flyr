@@ -1,9 +1,8 @@
 class BookingsController < ApplicationController
 	before_action :set_booking, only: [:show, :edit, :update, :destroy]
 	def new
-		@flights = Flight.where(id: params[:flight_id])
-		@booking = Booking.new(set_booking_params)
-		# @booking.user = current_user if current_user
+		@flight = Flight.find(params[:flight_id])
+		@booking = Booking.new
 	end
 
 	def create
@@ -21,7 +20,6 @@ class BookingsController < ApplicationController
 	end
 
 	def show
-		binding.pry
 		@booking = Booking.find(params[:id])
 		@passenger = Passenger.where(booking_id: @booking.id)
 	end
