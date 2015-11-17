@@ -27,11 +27,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem "omniauth-facebook"
 gem "omniauth-twitter"
+gem "paypal-express"
 gem 'faker'
 
 gem "pry"
 gem "pry-nav"
 gem "cocoon"
+gem "puma"
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -49,6 +51,7 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+  gem "letter_opener"
 end
 
 group :production do
