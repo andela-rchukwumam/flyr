@@ -1,0 +1,63 @@
+<% provide(:title, 'Booking Confirmation') %>
+  <%= form_tag '/show_bookings', method: 'get' do %>
+  <h4 align= "center"  class="blue-text text-darken-2" >Your Booking For Flight "<%= @booking.flight.airline %> #000<%= @booking.id %>" from <%= @booking.flight.departure.city %> to <%= @booking.flight.arrival.city %> was successful.</h4>
+    <div class="container">
+        <div class="row">
+          <div class="col s6">
+          <h3>Booking Details</h3>
+            <table class="striped">
+                <tr>
+                  <th>Booking ID</th>
+                  <td><%= @booking.id %></td>
+                </tr>
+                <tr>
+                  <th>Departure Date</th>
+                  <td><%= @booking.flight.departure_date.strftime("%B %d, %Y")  %></td>
+                </tr>
+                <tr>
+                <th>Arrival Date</th>
+                  <td><%= @booking.flight.arrival_date.strftime("%B %d, %Y") %></td>
+                </tr>
+                <tr>
+                  <th>From</th>
+                  <td><%= @booking.flight.departure.name %></td>
+                </tr>
+                <tr>
+                  <th>To</th>
+                  <td><%= @booking.flight.arrival.name %></td>
+                </tr>
+                <tr>
+                  <th>Time</th>
+                  <td><%= @booking.flight.flight_time %></td>
+                </tr>
+                <tr>
+                  <th>Airline</th>
+                  <td><%= @booking.flight.airline%></td>
+                </tr>
+                <tr>
+                  <th>Price</th>
+                  <td>$<%= @booking.flight.price %> / passenger </td>
+                </tr>      
+                </tbody>
+            </table>
+            <%= submit_tag "Pay for Booking", :name => nil, class: "btn-large blue"%>
+          </div>
+          <div class="col s6">
+          <h3> Passenger Details</h3>
+              <%@passenger.each do |passenger|%>
+                  <table class="striped">
+                    <tr>
+                      <th>Passenger Name</th>
+                      <td><%= passenger.name%></td>
+                    </tr>
+                    <tr>
+                      <th>Passenger Email</th>
+                      <td><%= passenger.email%></td>
+                  </tr>
+                  </table>
+              <% end %>
+          </div>
+        </div>
+    </div>
+<% end %>
+

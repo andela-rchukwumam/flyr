@@ -1,15 +1,59 @@
 <% provide(:title, 'Booking') %>
-<h3>Flight Booking Information</h3>
-<table>
-  <% form_tag bookings_path, method: 'get'  do%>
-   <div class="data-field">
-     <%= hidden_field_tag :booking %>
-        <tr>
-          <th>Flight #</th>
-        </tr>
-        <tr>
-          <td>flight.id</td>
-        </tr>
-   </div>
-  <% end %>
-</table>
+<% flight = @flight %>
+    <div class="container">
+        <div class="row">
+          <div class="col s6">
+              <h3>Flight Details</h3>
+                <table class="striped">
+                    <tr>
+                      <th>Flight No</th>
+                      <td><%= flight.id %></td>
+                    </tr>
+                    <tr>
+                      <th>Departure Date</th>
+                      <td><%= flight.departure_date.strftime("%B %d, %Y")  %></td>
+                    </tr>
+                    <tr>
+                    <th>Arrival Date</th>
+                      <td><%= flight.arrival_date.strftime("%B %d, %Y") %></td>
+                    </tr>
+                    <tr>
+                      <th>From</th>
+                      <td><%= flight.departure.name %></td>
+                    </tr>
+                    <tr>
+                      <th>To</th>
+                      <td><%= flight.arrival.name %></td>
+                    </tr>
+                    <tr>
+                      <th>Time</th>
+                      <td><%= flight.flight_time %></td>
+                    </tr>
+                    <tr>
+                      <th>No of Passengers</th>
+                      <td><%= params[:passengers]%></td>
+                    </tr>
+                    <tr>
+                      <th>Price</th>
+                      <td>$<%= flight.price %> / passenger </td>
+                    </tr>      
+                    </tbody>
+                </table>
+          </div>
+          <div class="col s6 toggle-passengers">
+          <h3> Passenger Details</h3>
+                <%= form_for @booking do |f| %>
+                <%if current_user%>
+                  <%= f.hidden_field :user_id, value: current_user.id %>
+                  <%end%>
+                  <%= f.hidden_field :flight_id, value: flight.id %>
+                      <%= f.fields_for :passengers do |passenger| %>
+                          <%= render 'passenger_fields', :f => passenger %>
+                       <% end %>
+                        <div class='links'>
+                          <%= link_to_add_association 'Add Passenger', f, :passengers, :class => "btn-large blue" %>
+                        </div>
+                      <%= f.submit "Book Flight", :name => nil, class: "btn-large blue book-flight"%>
+                <% end %>
+          </div>
+    </div>
