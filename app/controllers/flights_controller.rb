@@ -1,6 +1,5 @@
 class FlightsController < ApplicationController
 	def index
-		p "hello"
 	    @flight = Flight.new
 	    @airports = Airport.all.map { |airport| [airport.city, airport.id] }
 	    session['airports'] = @airports

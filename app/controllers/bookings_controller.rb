@@ -3,6 +3,10 @@ class BookingsController < ApplicationController
 	def new
 		@flight = Flight.find(params[:flight_id])
 		@booking = Booking.new
+		num_of_passenger = params[:passengers]
+    		num_of_passenger.to_i.times do
+      			@booking.passengers.new
+      		end
 	end
 
 	def create
@@ -10,6 +14,8 @@ class BookingsController < ApplicationController
 		
 		respond_to do |format|
 		     if @booking.save
+		     		session[:booking] = @booking;
+		     		BookingMailer.booking_info(current_user).deliver
 		       	format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
 		        	format.json { render :show, status: :created, location: @booking }
 		     else
@@ -17,6 +23,7 @@ class BookingsController < ApplicationController
 		        	format.json { render json: @booking.errors, status: :unprocessable_entity }
 		     end
 		end
+		
 	end
 
 	def show
@@ -29,10 +36,10 @@ class BookingsController < ApplicationController
 	     	 	if @booking.update(booking_params)
 	        		format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
 	        		format.json { render :show, status: :ok, location: @booking }
-	      	else
+	      		else
 	        		format.html { render :edit }
 	        		format.json { render json: @booking.errors, status: :unprocessable_entity }
-	      	end
+	      		end
     		end
   	end
 
