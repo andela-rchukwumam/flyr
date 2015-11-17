@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/andela-rchukwumam/flyr/badge.svg?branch=master&service=github)](https://coveralls.io/github/andela-rchukwumam/flyr?branch=master)
+
 == README
 
 This README would normally document whatever steps are necessary to get the
