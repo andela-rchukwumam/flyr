@@ -1,5 +1,5 @@
 <%= form_tag new_booking_path, method: 'get' do %>
-  <div class="row">
+  <div class="row search-results">
   <table>
   <thead>
     <tr>
@@ -31,5 +31,5 @@
     </table>
     </div>
     <%= hidden_field_tag :passengers, params[:passengers] %>
-    <%= submit_tag "Select Flight", :name => nil, class: "btn-large blue" %>
+    <%= submit_tag "Select Flight", :name => nil, class: "btn-large blue search-btn" %>
 <% end %>

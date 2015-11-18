@@ -31,6 +31,11 @@ class BookingsController < ApplicationController
 		@passenger = Passenger.where(booking_id: @booking.id)
 	end
 
+	def  pay_for_ticket
+		@booking = Booking.find(params[:id])
+		redirect_to Booking.paypal_url(root_path)
+	end
+
 	def update
     		respond_to do |format|
 	     	 	if @booking.update(booking_params)
@@ -56,7 +61,7 @@ class BookingsController < ApplicationController
     	end
 
 	def booking_params
-	    	params.require(:booking).permit(:flight_id, :user_id,
+	    	params.require(:booking).permit(:flight_id, :user_id, 
 	    					passengers_attributes: [:name, :email])
   	end
 

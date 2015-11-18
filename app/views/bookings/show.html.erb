@@ -1,5 +1,4 @@
 <% provide(:title, 'Booking Confirmation') %>
-  <%= form_tag '/show_bookings', method: 'get' do %>
   <h4 align= "center"  class="blue-text text-darken-2" >Your Booking For Flight "<%= @booking.flight.airline %> #000<%= @booking.id %>" from <%= @booking.flight.departure.city %> to <%= @booking.flight.arrival.city %> was successful.</h4>
     <div class="container">
         <div class="row">
@@ -12,6 +11,7 @@
                 </tr>
                 <tr>
                   <th>Departure Date</th>
+                  <%=  @booking %>
                   <td><%= @booking.flight.departure_date.strftime("%B %d, %Y")  %></td>
                 </tr>
                 <tr>
@@ -40,7 +40,7 @@
                 </tr>      
                 </tbody>
             </table>
-            <%= submit_tag "Pay for Booking", :name => nil, class: "btn-large blue"%>
+            <%= link_to "Pay for Booking",  pay_ticket_path( :hash => @booking.id ),  class: "btn-large blue" %>
           </div>
           <div class="col s6">
           <h3> Passenger Details</h3>
@@ -59,5 +59,4 @@
           </div>
         </div>
     </div>
-<% end %>
 

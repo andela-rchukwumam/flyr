@@ -48,12 +48,12 @@
                   <%end%>
                   <%= f.hidden_field :flight_id, value: flight.id %>
                       <%= f.fields_for :passengers do |passenger| %>
-                          <%= render 'passenger_fields', :f => passenger %>
+                          <%= render 'passenger_fields', :f => passenger  %>
                        <% end %>
                         <div class='links'>
                           <%= link_to_add_association 'Add Passenger', f, :passengers, :class => "btn-large blue" %>
                         </div>
-                      <%= f.submit "Book Flight", :name => nil, class: "btn-large blue book-flight"%>
+                      <%= f.submit "Book Flight", :name => nil, class: "btn-large blue book-flight"   %>
                 <% end %>
           </div>
     </div>
