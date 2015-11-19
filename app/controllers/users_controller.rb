@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
-	def show
-		# @user = User.find(params[:id])
+	def index
+		@user = User.find_by_id (session[:user_id])
 	end
   	def new
   		@user = User.new
