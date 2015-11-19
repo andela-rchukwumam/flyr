@@ -1,5 +1,5 @@
 <% provide(:title, 'Booking Confirmation') %>
-  <h4 align= "center"  class="blue-text text-darken-2" >Your Booking For Flight "<%= @booking.flight.airline %> #000<%= @booking.id %>" from <%= @booking.flight.departure.city %> to <%= @booking.flight.arrival.city %> was successful.</h4>
+  <h4 align= "center"  class="green-text text-darken-2" >Your Booking For Flight "<%= @booking.flight.airline %> #000<%= @booking.id %>" from <%= @booking.flight.departure.city %> to <%= @booking.flight.arrival.city %> was successful.</h4>
     <div class="container">
         <div class="row">
           <div class="col s6">
@@ -11,7 +11,6 @@
                 </tr>
                 <tr>
                   <th>Departure Date</th>
-                  <%=  @booking %>
                   <td><%= @booking.flight.departure_date.strftime("%B %d, %Y")  %></td>
                 </tr>
                 <tr>
@@ -40,7 +39,12 @@
                 </tr>      
                 </tbody>
             </table>
-            <%= link_to "Pay for Booking",  pay_ticket_path( :hash => @booking.id ),  class: "btn-large blue" %>
+            <%= form_tag pay_ticket_path, method: "get" do %>
+            <%= hidden_field_tag :id, params[:id],  value: @booking.id %>
+            <%= hidden_field_tag :cost, params[:cost],  value: @booking.flight.price %>
+            <%= hidden_field_tag :passengers, params[:passengers],  value: @passenger.count %>
+            <%= button_tag "Pay for Booking", class: "btn-large blue" %>
+            <% end %>
           </div>
           <div class="col s6">
           <h3> Passenger Details</h3>

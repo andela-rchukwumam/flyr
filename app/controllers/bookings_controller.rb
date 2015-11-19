@@ -5,8 +5,8 @@ class BookingsController < ApplicationController
 		@booking = Booking.new
 		num_of_passenger = params[:passengers]
     		num_of_passenger.to_i.times do
-      			@booking.passengers.new
-      		end
+      		@booking.passengers.new
+      	end
 	end
 
 	def create
@@ -15,9 +15,10 @@ class BookingsController < ApplicationController
 		respond_to do |format|
 		     if @booking.save
 		     		session[:booking] = @booking;
-		     		BookingMailer.booking_info(current_user).deliver
+		     		BookingMailer.booking_info(current_user, @booking, params[:booking][:passengers_attributes]).deliver
 		       	format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
 		        	format.json { render :show, status: :created, location: @booking }
+		        	
 		     else
 		        	format.html { render :new }
 		        	format.json { render json: @booking.errors, status: :unprocessable_entity }
@@ -32,8 +33,9 @@ class BookingsController < ApplicationController
 	end
 
 	def  pay_for_ticket
-		@booking = Booking.find(params[:id])
-		redirect_to Booking.paypal_url(root_path)
+		booking = Booking.find(params[:id])
+		# @booking = BookingPresenter.new(booking)
+		redirect_to Booking.paypal_url(paypal_path, params[:id], params[:cost], params[:passengers])
 	end
 
 	def update
@@ -54,6 +56,9 @@ class BookingsController < ApplicationController
 	      	format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
 	      	format.json { head :no_content }
 	    	end
+	end
+	def payment
+		render 'bookings/payment'
 	end
 	private
 	def set_booking

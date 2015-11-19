@@ -8,10 +8,12 @@ Rails.application.routes.draw do
   get    'about'   => 'flights#about'
   get    'contact' => 'flights#contact'
   get    'signup'  => 'users#new'
+  # get '/users/:id', to: 'users#show', as: 'current_user'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   get 'logout'  => 'sessions#destroy'
   get 'search' => 'flights#search', as: "flights_search"
+  get 'paypal' => 'bookings#payment'
   resources :users
   resources :bookings
 end
