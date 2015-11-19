@@ -3,7 +3,9 @@ class UsersController < ApplicationController
 	def index
 		@user = User.find_by_id (session[:user_id])
 	end
-
+      def show
+          @user = User.find_by_id (session[:user_id])
+      end
   	def new
   		@user = User.new
   	end
