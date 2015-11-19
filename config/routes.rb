@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'logout'  => 'sessions#destroy'
   get 'search' => 'flights#search', as: "flights_search"
   get 'paypal' => 'bookings#payment'
+  get "past_bookings" => "bookings#past_bookings"
   resources :users
   resources :bookings
 end

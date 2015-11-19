@@ -1,5 +1,7 @@
 class BookingsController < ApplicationController
 	before_action :set_booking, only: [:show, :edit, :update, :destroy]
+
+
 	def new
 		@flight = Flight.find(params[:flight_id])
 		@booking = Booking.new
@@ -59,9 +61,14 @@ class BookingsController < ApplicationController
 	      	format.json { head :no_content }
 	    	end
 	end
+
 	def payment
 		render 'bookings/payment'
 	end
+
+     def past_bookings
+        @bookings = current_user.bookings
+      end
 	private
 	def set_booking
       	@booking = Booking.find(params[:id])

@@ -1,0 +1,30 @@
+<div class="row search-results">
+<h3>Past Bookings</h3>
+  <table>
+  <thead>
+    <tr>
+      <th>Booking #</th>
+      <th>Departure Date</th>
+      <th>Arrival Date</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Time</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+
+    <% @bookings.each do |booking| %>
+      <tbody>
+        <tr>
+          <td><%= booking.id %></td>
+          <td><%= booking.flight.departure_date.strftime("%B %d, %Y")  %></td>
+          <td><%= booking.flight.arrival_date.strftime("%B %d, %Y") %></td>
+          <td><%= booking.flight.departure.name %></td>
+          <td><%= booking.flight.arrival.name %></td>
+          <td><%= booking.flight.flight_time %></td>
+          <td>$<%= booking.flight.price %></td>
+        </tr>      
+      </tbody>
+    <% end %>
+    </table>
+    </div>
