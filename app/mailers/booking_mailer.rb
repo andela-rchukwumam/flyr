@@ -6,7 +6,6 @@ class BookingMailer < ApplicationMailer
         @name = current_user.name
         # @flight_id = session[:booking].flight_id
         @email = current_user.email
-        @passenger = passenger
 
         if @email
           mail( to: @email, subject: "Your Booking Information")

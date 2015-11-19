@@ -15,7 +15,9 @@ class BookingsController < ApplicationController
 		respond_to do |format|
 		     if @booking.save
 		     		session[:booking] = @booking;
-		     		BookingMailer.booking_info(current_user, @booking, params[:booking][:passengers_attributes]).deliver
+		     		if current_user
+		     			BookingMailer.booking_info(current_user, @booking, params[:booking][:passengers_attributes]).deliver
+		     		end
 		       	format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
 		        	format.json { render :show, status: :created, location: @booking }
 		        	
