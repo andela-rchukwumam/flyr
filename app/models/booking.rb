@@ -12,7 +12,7 @@ class Booking < ActiveRecord::Base
         cmd: "_xclick",
         upload: 1,
         return: "#{Rails.application.secrets.app_host}#{paypal_path}",
-        amount: cost.to_i * passenger.to_i
+        amount: cost.to_f * passenger.to_f
     }
     "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   end
