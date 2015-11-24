@@ -80,5 +80,4 @@ You can also check <a href="https://ruth-flyapp.herokuapp.com" target="blank">th
 
 Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/andela-aadepoju/Fly. 
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/andela-rchukwumam/flyr
