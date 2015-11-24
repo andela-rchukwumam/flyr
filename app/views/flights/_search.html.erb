@@ -10,8 +10,8 @@
     <%= select_tag :to, options_for_select(session['airports']), prompt: "To" %>
   </div>
 
-  <div class="input-field col s3">
-      <%= select_tag :date, options_for_select(session['dates']), prompt: "Date" %>
+  <div class="input-field col s3" >
+      <%= select_tag :date, options_for_select(session['dates']), {prompt: "Date", :id => "date"} %>
   </div>
 
   <div class="input-field col s3">

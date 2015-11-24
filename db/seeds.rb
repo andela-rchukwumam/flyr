@@ -23,15 +23,15 @@ airports = [
   { name: "Yakubu Gowon Airport, Jos", city: "Jos" },
   { name: "Kaduna Airport, Kaduna", city: "Kaduna" },
   { name: "Maiduguri International Airport, Borno", city: "Borno" },
-  { name: "Sadiq Abubakar III International Airport, Sokoto", city: "Sokoto"},
-  { name: "Yola Airport, Yola", city: "Yola"}
+  { name: "Sadiq Abubakar III International Airport, Sokoto", city: "Sokoto" },
+  { name: "Yola Airport, Yola", city: "Yola" }
 ]
 
 Flight.delete_all
 
 airlines = ["Villagers Air", "Arik Air", "Dana Air", "Andela Air",
-  "Sosoliso Air", "Nigerian Airways","Aero Contractors", "Kuvokiland Airlines",
-  "Ikem Air", "Adeybee Air","Comet Aviation", "Galaxy Skylines", "Workdey Air",
+  "Sosoliso Air", "Nigerian Airways", "Aero Contractors", "Kuvokiland Airlines",
+  "Ikem Air", "Adeybee Air", "Comet Aviation", "Galaxy Skylines", "Workdey Air",
   "K-S Air", "Arnold Air", "Edo Airways", "Night Crawlers", "TIA Liners",
   "Peak Flyers"]
 
