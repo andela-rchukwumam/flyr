@@ -2,7 +2,6 @@ class BookingMailer < ApplicationMailer
   def booking_info(current_user, booking, _passenger)
     @booking = booking
     @name = current_user.name
-    # @flight_id = session[:booking].flight_id
     @email = current_user.email
 
     if @email

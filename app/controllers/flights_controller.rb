@@ -4,6 +4,7 @@ class FlightsController < ApplicationController
     @airports = Airport.all.map { |airport| [airport.city, airport.id] }
     session["airports"] = @airports
     @dates = Flight.order("departure_date asc").all.map { |flight| [flight.departure_date.strftime("%d/%m/%Y")] }.uniq
+
     session["dates"] = @dates
     @passengers = [1, 2, 3, 4]
     session["passengers"] = @passengers

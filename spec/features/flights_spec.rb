@@ -43,7 +43,10 @@ RSpec.feature "Flights", type: :feature do
     click_on "Search"
     click_on "Select Flight"
     fill_in("booking_passengers_attributes_0_name", with: "Ruth")
-    fill_in("booking_passengers_attributes_0_email", with: "ruth.chukwumam@andela.com")
+    fill_in(
+      "booking_passengers_attributes_0_email",
+      with: "ruth.chukwumam@andela.com"
+    )
     click_on "Book Flight"
     expect(page).to have_content "Booking Details"
   end

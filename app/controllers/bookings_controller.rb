@@ -12,13 +12,18 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+
     respond_to do |format|
       if @booking.save
         session[:booking] = @booking
         if current_user
-          BookingMailer.booking_info(current_user, @booking,
-                              params[:booking][:passengers_attributes]).deliver
+          BookingMailer.booking_info(
+            current_user,
+            @booking,
+            params[:booking][:passengers_attributes]
+          ).deliver
         end
+
         format.html { redirect_to @booking, notice: "Booking was successful." }
         format.json { render :show, status: :created, location: @booking }
       end
@@ -32,8 +37,12 @@ class BookingsController < ApplicationController
 
   def pay_for_ticket
     booking = Booking.find(params[:id])
-    redirect_to Booking.paypal_url(paypal_path, params[:id], params[:cost],
-                                                  params[:passengers])
+    redirect_to Booking.paypal_url(
+      paypal_path,
+      params[:id],
+      params[:cost],
+      params[:passengers]
+    )
   end
 
   def payment
@@ -51,11 +60,10 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:flight_id, :user_id,
-                            passengers_attributes: [:name, :email])
+    params.require(:booking).permit(
+      :flight_id,
+      :user_id,
+      passengers_attributes: [:name, :email]
+    )
   end
-
-  # def set_booking_params
-  #   params.permit(:flight_id, :user_id)
-  # end
 end
