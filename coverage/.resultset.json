@@ -51,9 +51,6 @@
         2,
         1,
         null,
-        0,
-        0,
-        null,
         null,
         null,
         null,
@@ -63,26 +60,6 @@
         null,
         null,
         1,
-        0,
-        0,
-        null,
-        null,
-        null,
-        1,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        null,
-        null,
-        null,
-        null,
-        1,
-        0,
-        0,
         0,
         0,
         null,
@@ -107,8 +84,8 @@
         null,
         null,
         null,
-        1,
-        0,
+        null,
+        null,
         null,
         null
       ],
@@ -122,7 +99,7 @@
         1,
         null,
         1,
-        26,
+        28,
         null,
         null
       ],
@@ -154,7 +131,7 @@
       "C:/Users/Ikmich/Documents/Vagrant/workspace/fly/app/controllers/sessions_controller.rb": [
         1,
         1,
-        6,
+        8,
         null,
         null,
         1,
@@ -276,6 +253,6 @@
         null
       ]
     },
-    "timestamp": 1448464824
+    "timestamp": 1448466584
   }
 }

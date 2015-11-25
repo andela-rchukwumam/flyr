@@ -13,18 +13,15 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     respond_to do |format|
-    if @booking.save
-      session[:booking] = @booking
-      if current_user
-        BookingMailer.booking_info(current_user, @booking,
-                            params[:booking][:passengers_attributes]).deliver
+      if @booking.save
+        session[:booking] = @booking
+        if current_user
+          BookingMailer.booking_info(current_user, @booking,
+                              params[:booking][:passengers_attributes]).deliver
+        end
+        format.html { redirect_to @booking, notice: "Booking was successful." }
+        format.json { render :show, status: :created, location: @booking }
       end
-      format.html { redirect_to @booking, notice: "Booking was successful." }
-      format.json { render :show, status: :created, location: @booking }
-    else
-      format.html { render :new }
-      format.json { render json: @booking.errors, status: :unprocessable_entity }
-    end
     end
   end
 
@@ -37,26 +34,6 @@ class BookingsController < ApplicationController
     booking = Booking.find(params[:id])
     redirect_to Booking.paypal_url(paypal_path, params[:id], params[:cost],
                                                   params[:passengers])
-  end
-
-  def update
-    respond_to do |format|
-      if @booking.update(booking_params)
-        format.html { redirect_to @booking, notice: "Booking was successful" }
-        format.json { render :show, status: :ok, location: @booking }
-      else
-        format.html { render :edit }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy
-    @booking.destroy
-    respond_to do |format|
-      format.html { redirect_to bookings_url, notice: "Booking was destroyed." }
-      format.json { head :no_content }
-    end
   end
 
   def payment
@@ -78,7 +55,7 @@ class BookingsController < ApplicationController
                             passengers_attributes: [:name, :email])
   end
 
-  def set_booking_params
-    params.permit(:flight_id, :user_id)
-  end
+  # def set_booking_params
+  #   params.permit(:flight_id, :user_id)
+  # end
 end

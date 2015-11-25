@@ -19,6 +19,12 @@ RSpec.feature "LogIn", type: :feature do
     expect(page).to have_content("Log In")
   end
 
+  scenario "with credentials" do
+    log_in_with "valid@example.com", "password"
+
+    expect(page).to have_content("Log In")
+  end
+
   def log_in_with(email, password)
     visit login_path
     fill_in "Email", with: email
