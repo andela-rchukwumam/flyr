@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "SignUps", type: :feature do
+RSpec.feature "SignUp", type: :feature do
   scenario "with valid email and password" do
     sign_up_with "valid@example.com", "password"
 
