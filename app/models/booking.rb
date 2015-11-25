@@ -4,7 +4,7 @@ class Booking < ActiveRecord::Base
   belongs_to :user
 
   accepts_nested_attributes_for :passengers, reject_if: :all_blank, allow_destroy: true
-  
+
   def self.paypal_url(paypal_path, _id, cost, passenger)
     values = {
                   business: "merchant@ruth-flyapp.com",
