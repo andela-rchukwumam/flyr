@@ -1,4 +1,7 @@
 [![Coverage Status](https://coveralls.io/repos/andela-rchukwumam/flyr/badge.svg?branch=master&service=github)](https://coveralls.io/github/andela-rchukwumam/flyr?branch=master)
+
+[![Code Climate](https://codeclimate.com/repos/56570f0fd0117a4bae024c2e/badges/f2f10d25fc270a0776d6/gpa.svg)](https://codeclimate.com/repos/56570f0fd0117a4bae024c2e/feed)
+
 # FLY
 
 
