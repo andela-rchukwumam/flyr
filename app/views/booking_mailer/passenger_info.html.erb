@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thanks for using our platform for your travel needs, <%= @name %></h1>
+    <p>
+      You have successfully made your booking.
+    </p>
+    <p>
+      Your booking details are:
+    </p>
+    <h3>Booking Details</h3>
+            <table class="striped">
+                <tr>
+                  <th>Booking ID</th>
+                  <td><%= @booking.id %></td>
+                </tr>
+                <tr>
+                  <th>Departure Date</th>
+                  <td><%= @booking.flight.departure_date.strftime("%B %d, %Y")  %></td>
+                </tr>
+                <tr>
+                <th>Arrival Date</th>
+                  <td><%= @booking.flight.arrival_date.strftime("%B %d, %Y") %></td>
+                </tr>
+                <tr>
+                  <th>From</th>
+                  <td><%= @booking.flight.departure.name %></td>
+                </tr>
+                <tr>
+                  <th>To</th>
+                  <td><%= @booking.flight.arrival.name %></td>
+                </tr>
+                <tr>
+                  <th>Time</th>
+                  <td><%= @booking.flight.flight_time %></td>
+                </tr>
+                <tr>
+                  <th>Airline</th>
+                  <td><%= @booking.flight.airline%></td>
+                </tr>
+                <tr>
+                  <th>Price</th>
+                  <td>$<%= @booking.flight.price %> / passenger </td>
+                </tr>      
+                </tbody>
+            </table>
+    <p>
+      Your optimal satisfaction is of utmost importance to us.
+    </p>
+    <p>
+      Thanks for Choosing Flyer!
+    </p>
+    <p>Have a safe trip!</p>
+  </body>
+</html>

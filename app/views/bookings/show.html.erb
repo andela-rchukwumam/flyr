@@ -1,8 +1,13 @@
 <% provide(:title, 'Booking Confirmation') %>
-  <h4 align= "center"  class="green-text text-darken-2" >Your Booking For Flight "<%= @booking.flight.airline %> #000<%= @booking.id %>" from <%= @booking.flight.departure.city %> to <%= @booking.flight.arrival.city %> was successful.</h4>
+  <h6 align= "center"  class="green-text text-darken-2" >Your Booking For Flight "<%= @booking.flight.airline %> #000<%= @booking.id %>" from <%= @booking.flight.departure.city %> to <%= @booking.flight.arrival.city %> was successful.</h6>
     <div class="container">
         <div class="row">
           <div class="col s6">
+            <% flash.each do | name, msg | %>
+              <div class = "row">
+              <%= content_tag :h6, msg, class: [name, "col offset-l1 flasher"] %>
+            </div>
+            <% end %>
           <h3>Booking Details</h3>
             <table class="striped">
                 <tr>
@@ -32,6 +37,10 @@
                 <tr>
                   <th>Airline</th>
                   <td><%= @booking.flight.airline%></td>
+                </tr>
+                <tr>
+                  <th>No of Passengers</th>
+                  <td><%= @passenger.count%></td>
                 </tr>
                 <tr>
                   <th>Price</th>

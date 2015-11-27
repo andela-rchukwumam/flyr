@@ -8,9 +8,13 @@ Hello there, Fly is a flight booking system and it is written with rails. Just i
 
 ##Features
 
-This app enebles you to search for already registered flights and book the flight that you want. You can search for flights with date, your origin location and your destination. On the booking page, you will be able to create fields for any number of passengers you want to book. On successful booking of a flight, you will recieve a booking-success email. 
-
-The option of paying via paypal is a work in progress and it should be completed in few days time.Other features include cancelling a booking before the day of the flight and also managing the number of passengers on a booking. You will also recieve a booking update email if you choose to manage your app. Check out the cool app here! Bug discoveries, suggestions and general feedback will always be appreciated.
+    *Flight search.
+    *Flight booking.
+    *Payment integration with paypal.
+    *Viewing past booking.
+    *Email notification.
+    *User can add or remove passenger on booking page.
+    *Bug discoveries, suggestions and general feedback will always be appreciated.
 
 ##Getting Started
 
@@ -70,13 +74,15 @@ If you want the tests to read more like a document then pass in these options to
 ```
 bundle exec rspec spec/models/booking_spec.rb -f documentation
 ``` 
-
+##Limitations
 The app is a work in progress, as such, it has the following limitations among others.
 
-Booking can not be done via any other payment gateway.App doesn't have a private domain name yet.
+*Booking can not be done via any other payment gateway.
+*App doesn't have a private domain name yet.
 
+##Project Website
 You can also check <a href="https://ruth-flyapp.herokuapp.com" target="blank">the hosted version</a> of this app
 
-Contributing
+##Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/andela-rchukwumam/flyr

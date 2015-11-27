@@ -16,6 +16,11 @@ class BookingsController < ApplicationController
     respond_to do |format|
       if @booking.save
         session[:booking] = @booking
+        session[:passengers] = params[:booking][:passengers_attributes]
+        BookingMailer.passenger_info(
+          @booking,
+          params[:booking][:passengers_attributes]
+        ).deliver
         if current_user
           BookingMailer.booking_info(
             current_user,
@@ -36,7 +41,6 @@ class BookingsController < ApplicationController
   end
 
   def pay_for_ticket
-    booking = Booking.find(params[:id])
     redirect_to Booking.paypal_url(
       paypal_path,
       params[:id],

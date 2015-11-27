@@ -19,7 +19,6 @@ $primary-color: color("blue", "lighten-2") !default;
  */
 
 .material-icons.md-48 { font-size: 48px; }
-
     * {
     margin: 0;
     }
@@ -40,8 +39,17 @@ $primary-color: color("blue", "lighten-2") !default;
 } 
 
 footer.page-footer{
-    margin-top: 90px
+    margin-top: 90px;
+    height: 4em ;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+
+  text-align: center;
 }
+
 select{
 	display: block;
 	width: 25%
@@ -79,8 +87,10 @@ select{
 .toggle-passengers {
   overflow: auto;
   height:513px;
+  paddin-top: 15px;
   padding-left: 15px;
   padding-right: 15px;
+  padding-bottom: 15px;
 }
 .links .btn-large {
   margin-top: 15px;
@@ -91,4 +101,8 @@ select{
 }
 .search-btn {
   margin-left: 15px;
+}
+.center.details{
+  font-size: 1.4rem;
+  line-height: 1.6em;
 }
