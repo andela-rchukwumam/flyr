@@ -48,6 +48,7 @@ group :development, :test do
   gem "sqlite3"
   gem "coveralls", require: false
   gem "database_cleaner"
+  gem "codeclimate-test-reporter", require: nil
 end
 
 group :development do
