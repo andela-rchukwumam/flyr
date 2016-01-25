@@ -39,7 +39,7 @@ airports.each do |airport|
   Airport.create(airport)
 end
 
-2000.times{
+50.times{
   forward_rand = Random.rand(2..30)
   flight_time = Random.rand(0..2)
   date = Faker::Time.forward(12, :morning)

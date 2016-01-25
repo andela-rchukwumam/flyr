@@ -10,6 +10,29 @@ class FlightsController < ApplicationController
     session["passengers"] = @passengers
   end
 
+  def create
+    @from = params[:dept_id].to_i
+    @to = params[:arr_id].to_i
+    @departure_date = (params[:dept_date])
+    @arrival_date = (params[:arr_date])
+    @passengers_select = params[:passengers]
+    @flight = Flight.new(flight_params)
+    if @flight.save
+      respond_to do |format|
+       format.html { render :all_flights }
+       format.js {}
+     end
+   end
+  end
+
+  def show
+    @flights = Flight.all
+      respond_to do |format|
+      format.html { render :all_flights }
+      format.js {}
+    end
+  end
+
   def search
     @from = params[:from].to_i
     @to = params[:to].to_i
@@ -20,5 +43,15 @@ class FlightsController < ApplicationController
       format.html { render :index }
       format.js {}
     end
+  end
+
+  private
+    def flight_params
+    params.permit(
+      :from,
+      :to,
+      :dept_date,
+      :arr_date
+    )
   end
 end

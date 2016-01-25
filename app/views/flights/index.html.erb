@@ -5,7 +5,12 @@
       <div class="row center">
         <h5 class="header col s12 light">Find your destination in one Search & Book the best deal</h5>
       </div>
-        <%= render 'search' %>   
+        <%= render 'search' %>  
+        <div class="row center">
+          <%= form_tag all_flights_path, method: "get" do %>
+            <%= button_tag "All Flights", class: "btn-large blue" %>
+            <% end %>
+        </div> 
       <br><br>
     </div>
  </div>
