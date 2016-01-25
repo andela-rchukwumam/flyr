@@ -5,20 +5,31 @@
     <div class="row center">
       <%= hidden_field_tag :create %>
       <div class="input-field col s6">
-        <%= select_tag :from, options_for_select(session['airports']),  prompt: "From" %>
+        <%= select_tag :dept_id, options_for_select(session['airports']),  prompt: "From" %>
       </div>
       <div class="input-field col s6">
-        <%= select_tag :to, options_for_select(session['airports']), prompt: "To" %>
+        <%= select_tag :arr_id, options_for_select(session['airports']), prompt: "To" %>
         </div>
       <div class="input-field col s6">
-        <%= select_tag :dept_date, options_for_select(session['departure_date']), prompt: "Departure Date" %>
+        <%= select_tag :departure_date, options_for_select(session['dates']), prompt: "Departure Date" %>
       </div>
       <div class="input-field col s6">
-        <%= select_tag :arr_date, options_for_select(session['arrival_date']), prompt: "Arrival Date" %>
+        <%= select_tag :arrival_date, options_for_select(session['dates']), prompt: "Arrival Date" %>
       </div>
       <div class="input-field col s6">
-        </div>
-      <div class="row center">
+        <%= select_tag :airline, options_for_select(["Villagers Air", "Arik Air", "Dana Air", "Andela Air",
+                        "Sosoliso Air", "Nigerian Airways", "Aero Contractors", "Kuvokiland Airlines",
+                        "Ikem Air", "Adeybee Air", "Comet Aviation", "Galaxy Skylines", "Workdey Air",
+                        "K-S Air", "Arnold Air"]), prompt: "Airlines" %>
+      </div>
+      <div class="input-field col s6">
+        <%= select_tag :price, options_for_select(["100", "70", "50", "20",
+                        "65", "89", "399", "989","12", "566"]), prompt: "Flight Price" %>
+      </div>
+      <div class="input-field col s6">
+        <%= select_tag :flight_time, options_for_select(["10:00 AM", "7:00 PM", "2:00 PM", "5:00AM", "8:30 AM"]), prompt: "Flight Time" %>
+      </div>
+      <div class="row center col s12">
         <%= submit_tag "Create", :name => nil, class: "btn-large blue" %>
       </div>
     </div>

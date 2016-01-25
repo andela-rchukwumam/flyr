@@ -1,4 +1,5 @@
 class FlightsController < ApplicationController
+  include ActionController::Live
   def index
     @flight = Flight.new
     @airports = Airport.all.map { |airport| [airport.city, airport.id] }
@@ -11,22 +12,22 @@ class FlightsController < ApplicationController
   end
 
   def create
-    @from = params[:dept_id].to_i
-    @to = params[:arr_id].to_i
-    @departure_date = (params[:dept_date])
-    @arrival_date = (params[:arr_date])
-    @passengers_select = params[:passengers]
     @flight = Flight.new(flight_params)
+    @dept_id = params[:dept_id].to_i
+    @arr_id = params[:arr_id].to_i
+    @departure_date = (params[:departure_date])
+    @arrival_date = (params[:arrival_date])
+    @airline = (params[:airline])
     if @flight.save
       respond_to do |format|
-       format.html { render :all_flights }
+       format.html { render :create }
        format.js {}
      end
    end
   end
 
   def show
-    @flights = Flight.all
+    @flight = Flight.all
       respond_to do |format|
       format.html { render :all_flights }
       format.js {}
@@ -48,10 +49,13 @@ class FlightsController < ApplicationController
   private
     def flight_params
     params.permit(
-      :from,
-      :to,
-      :dept_date,
-      :arr_date
+      :dept_id,
+      :arr_id,
+      :departure_date,
+      :arrival_date,
+      :airline,
+      :flight_time,
+      :price
     )
   end
 end
